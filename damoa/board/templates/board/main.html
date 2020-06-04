@@ -1,0 +1,34 @@
+    <title>게시판</title>
+  </head>
+  <body>
+    <h1>게시판</h1>
+        {% if posts %}
+         {% for post in posts %}
+
+        제목 <a href="{% url 'boarddetail' post.id %}"><p> {{post.title}}</p></a></td>
+        
+        {% endfor %}
+        {% endif %}
+        {%if a%}
+        <form action="{% url 'boardnew' %}">
+          <input class="btn btn-dark" type="submit" value="등록하기">
+        </form>
+        {% else %}
+        {% endif %}
+    </div>
+    
+    <div class='container'>
+      {% if posts.has_previous %}
+      <a href='?page=1'>First</a>
+      <a href='?page={{posts.previous_page_number}}'>Previous</a>
+      {% endif %}
+  
+      <span>{{posts.number}}</span>
+      <span>of</span>
+      <span>{{posts.paginator.num_pages}}</span>
+  
+      {% if posts.has_next %}
+      <a href='?page={{posts.next_page_number}}'>Next</a>
+      <a href='?page={{posts.paginator.num_pages}}'>Last</a>
+      {% endif %}
+    </div>

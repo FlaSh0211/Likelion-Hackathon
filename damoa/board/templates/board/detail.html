@@ -1,0 +1,38 @@
+
+    <!-- As a link -->
+
+    <br>
+    <div class="container">
+        <div class="card justify-content-center" style="width: 70%;">
+            {% if post.image %}
+            <img style="width:100%;padding:5% 5% 5% 5%;" src="{{ post.image }}">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">{{post.content}}<br>Create date {{post.up_date|date:"y-m-d"}}</p>
+              <br>
+              {%if a%}
+              <form action="{% url 'boardedit' post.id%}">
+                <input class="btn btn-dark" type="submit" value="수정하기">
+              </form>
+              <br>
+              <form action="{% url 'boarddelete' post.id%}">
+                <input class="btn btn-dark" type="submit" value="삭제하기">
+              </form>
+              <br>
+              <form action="{% url 'boardmain'%}">
+                <input class="btn btn-dark" type="submit" value="뒤로가기">
+              </form>
+              {% else %}
+            </div>
+          </div>
+        
+
+          <br>
+          <form action="{% url 'boardmain'%}">
+            <input class="btn btn-dark" type="submit" value="뒤로가기">
+          </form>
+          {% endif %}
+          
+     
+    </div>
